@@ -25,9 +25,17 @@ const Recipes = props => {
     <div className="recipe">
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
-      <h1>{recipe && recipe.title}</h1>
-      <p>{recipe && recipe.ingredients} </p>
-      <p>{recipe && recipe.method} </p>
+      <>
+        <h2 className="page-title">{recipe && recipe.title}</h2>
+        <p>Takes</p>
+        <ul>
+          {recipe &&
+            recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)}
+        </ul>
+        <p>{recipe && recipe.method} </p>
+        {/* <p>{recipe && recipe.ingredients} </p>
+         */}
+      </>
     </div>
   )
 }
