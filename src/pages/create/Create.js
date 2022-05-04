@@ -46,10 +46,12 @@ const Create = props => {
 
   // redirect user
   useEffect(() => {
+    if (error) return "there was an error" + error
+
     if (data) {
       history.push("/")
     }
-  }, [data])
+  }, [data, error, history])
 
   return (
     <div className="create">
