@@ -7,7 +7,7 @@ const Navbar = props => {
     <div className="navbar">
       <nav>
         <Link to="/" className="brand">
-          <h1>Cookin Ninja</h1>
+          <h1>Cooking Ninja</h1>
         </Link>
 
         <Searchbar />
