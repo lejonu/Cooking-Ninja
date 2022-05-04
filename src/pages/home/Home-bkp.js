@@ -18,8 +18,7 @@ const Home = () => {
       .collection("recipes")
       .get()
       .then(snapshot => {
-        console.log(snapshot)
-
+        // console.log(snapshot)
         if (snapshot.empty) {
           setError("No recipes to load")
           isPending(false)
@@ -38,8 +37,7 @@ const Home = () => {
         setError(err.message)
         setIsPending(false)
       })
-    // eslint-disable-next-line
-  }, [])
+  }, [data])
 
   return (
     <div className="home">
