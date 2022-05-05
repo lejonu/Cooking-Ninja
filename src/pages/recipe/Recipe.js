@@ -14,11 +14,10 @@ const Recipes = props => {
   useEffect(() => {
     setIsPending(true)
 
-    projectFirestore
+    const unsub = projectFirestore
       .collection("recipes")
       .doc(id)
-      .get()
-      .then(doc => {
+      .onSnapshot(doc => {
         // console.log(doc)
         if (doc.exists) {
           setIsPending(false)
@@ -28,11 +27,13 @@ const Recipes = props => {
           setError("Could not find that recipe")
         }
       })
+
+    return () => unsub()
   }, [id])
 
   const handleClick = () => {
     projectFirestore.collection("recipes").doc(id).update({
-      title: "Something compdletely different"
+      title: "Something completely different"
     })
   }
 
