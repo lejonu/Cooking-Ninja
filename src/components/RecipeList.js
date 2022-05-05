@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 import TrashIcon from "../assets/TrashIcon.svg"
 import { projectFirestore } from "../firebase/config"
 
-const RecipeList = ({ recipes }) => {
-  if (recipes.length === 0) {
+const RecipeList = ({ recipe }) => {
+  if (recipe.length === 0) {
     return <div className="error">No recipes to load...</div>
   }
 
@@ -14,13 +14,13 @@ const RecipeList = ({ recipes }) => {
 
   return (
     <div className="recipe-list">
-      {recipes.map(recipe => (
+      {recipe.map(recipe => (
         <div className="card" key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.cookingTime} to make.</p>
 
           <div className="">{recipe.method.substring(0, 100)} ...</div>
-          <Link to={`/recipes/${recipe.id}`}>Cook This</Link>
+          <Link to={`/recipe/${recipe.id}`}>Cook This</Link>
           <img
             onClick={() => handleClick(recipe.id)}
             className="delete"

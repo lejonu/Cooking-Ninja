@@ -1,4 +1,4 @@
-import "./Recipes.css"
+import "./Recipe.css"
 // import { useEffect } from "react"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
@@ -30,6 +30,12 @@ const Recipes = props => {
       })
   }, [id])
 
+  const handleClick = () => {
+    projectFirestore.collection("recipes").doc(id).update({
+      title: "Something compdletely different"
+    })
+  }
+
   return (
     <div className="recipe">
       {error && <p className="error">{error}</p>}
@@ -42,8 +48,7 @@ const Recipes = props => {
             recipe.ingredients.map((ing, index) => <li key={index}>{ing}</li>)}
         </ul>
         <p>{recipe && recipe.method} </p>
-        {/* <p>{recipe && recipe.ingredients} </p>
-         */}
+        <button onClick={handleClick}>Update me</button>
       </>
     </div>
   )
